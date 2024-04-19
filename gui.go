@@ -1,20 +1,22 @@
 package main
 
 import (
+	"image/color"
+
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
-	"fyne.io/fyne/v2/widget"
+	"fyne.io/fyne/v2/layout"
 )
 
-const windowDefaultWidth = 500
+const windowDefaultWidth = 750
 const windowDefaultHeight = 500
 
-func buildWindow(mApp fyne.App, mAppName string) fyne.Window {
+func buildWindow(mApp fyne.App, mAppName string, mSyncStatus SyncStatus, mSyncConfig SyncConfig, mAppColors AppColors, mSyncControlWidgets SyncControlWidgets) fyne.Window {
 	// Create a new window
 	mWindow := mApp.NewWindow(mAppName)
 
-	mWindow.SetContent(buildGUI())
+	mWindow.SetContent(buildGUI_2(mSyncStatus, mSyncConfig, mAppColors, mSyncControlWidgets))
 
 	//Resize window
 	// mWindow.Resize(fyne.NewSize(500, 500))
@@ -23,57 +25,63 @@ func buildWindow(mApp fyne.App, mAppName string) fyne.Window {
 	return mWindow
 }
 
-func buildGUI() fyne.CanvasObject {
+func buildGUI_2(mSyncStatus SyncStatus, mSyncConfig SyncConfig, mAppColors AppColors, mSyncControlWidgets SyncControlWidgets) fyne.CanvasObject {
+	//Initialize Bound Vars
 
-	top := makeTopBanner() //Toolbar
-
-	left := widget.NewLabel("Left")
-	right := widget.NewLabel("Right")
-
-	content := widget.NewLabel("Content")
-	content.Alignment = fyne.TextAlignCenter
-
-	//OLD
-	// // Create a label widget
-	// mLabel := widget.NewLabel("MCS Log to SQL Watcher")
-
-	// // Create a button widget
-	// mButton := widget.NewButton("Click me", func() {
-	// 	// mLabel.SetText("Button Clicked!")
-	// 	updateLabel(mLabel)
-	// })
-
-	// // Create a container to hold the widgets
-	// mContentContainer := container.NewVBox(
-	// 	mLabel,
-	// 	mButton,
+	// top := widget.NewToolbar(
+	// 	// widget.NewToolbarAction(theme.HomeIcon(), func() {}),
+	// 	widget.NewToolbarAction(nil, func() {}),
 	// )
-	// // Set the content of the window
-	// mWindow.SetContent(mContentContainer)
 
-	// container.New
+	section_topLogo := buildSection_topLogo()
 
-	return container.NewBorder(top, nil, left, right, content)
+	section_syncControl := buildSection_syncControlOuterContainer(mSyncStatus, mSyncConfig, mSyncControlWidgets, mAppColors)
+
+	section_startStopButton := buildSection_controlButtons(mSyncStatus, mSyncControlWidgets, mSyncConfig)
+
+	mSpacer_aboveBtn := canvas.NewImageFromResource(resource24pxspacerPng)
+	mSpacer_aboveBtn.FillMode = canvas.ImageFillOriginal
+
+	mSpacer_bottom := canvas.NewImageFromResource(resource50pxspacerPng)
+	mSpacer_bottom.FillMode = canvas.ImageFillOriginal
+
+	return container.New(
+		layout.NewVBoxLayout(),
+		section_topLogo,
+		section_syncControl,
+		mSpacer_aboveBtn,
+		section_startStopButton,
+		mSpacer_bottom)
 
 	//Custom Layout
 	// objs := []fyne.CanvasObject{content, top, left, right}
 	// return container.New(newMcsLayout(top, left, right, content), objs...)
 }
 
-// func updateLabel(label *widget.Label) {
-// 	label.SetText("Button Clicked!")
-// }
+func buildSection_syncControlOuterContainer(mSyncStatus SyncStatus, mSyncConfig SyncConfig, mSyncControlWidgets SyncControlWidgets, mAppColors AppColors) fyne.CanvasObject {
+	form_logConfigure := buildForm_SyncConfigure(mSyncStatus, mSyncConfig, mSyncControlWidgets, mAppColors)
+	form_syncOutput := buildForm_SyncStatus(mSyncStatus, mSyncControlWidgets, mAppColors)
 
-func makeTopBanner() fyne.CanvasObject {
+	horizLayoutContainer := container.New(layout.NewGridLayout(2), form_logConfigure, form_syncOutput)
+	fullCenterSection := container.New(layout.NewGridLayout(1), horizLayoutContainer)
 
-	top := widget.NewToolbar(
-		// widget.NewToolbarAction(theme.HomeIcon(), func() {}),
-		widget.NewToolbarAction(nil, func() {}),
-	)
+	return fullCenterSection
+}
+
+func buildSection_topLogo() fyne.CanvasObject {
+	mSpacer_1 := canvas.NewImageFromResource(resource50pxspacerPng)
+	mSpacer_1.FillMode = canvas.ImageFillOriginal
 
 	mLogo := canvas.NewImageFromResource(resourceMcsLogo2019Jpg)
-	mLogo.FillMode = canvas.ImageFillContain
+	mLogo.FillMode = canvas.ImageFillOriginal
 
-	return container.NewStack(top, mLogo)
-	// return container.NewStack(top, container.NewPadded(mLogo))
+	logoSubtext := canvas.NewText("Perfect Track Log Interpreter", color.Black)
+	logoSubtext.Alignment = fyne.TextAlignCenter
+
+	mSpacer_2 := canvas.NewImageFromResource(resource50pxspacerPng)
+	mSpacer_2.FillMode = canvas.ImageFillOriginal
+
+	logoSpacedContainer := container.New(layout.NewVBoxLayout(), mSpacer_1, mLogo, layout.NewSpacer(), logoSubtext, mSpacer_2)
+
+	return logoSpacedContainer
 }

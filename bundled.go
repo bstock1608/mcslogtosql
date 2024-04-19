@@ -5,6 +5,16 @@ package main
 
 import "fyne.io/fyne/v2"
 
+var resource24pxspacerPng = &fyne.StaticResource{
+	StaticName: "24px_spacer.png",
+	StaticContent: []byte(
+		"\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x03\x00\x00\x00ש\xcd\xca\x00\x00\x00\x19tEXtSoftware\x00Adobe ImageReadyq\xc9e<\x00\x00\x03&iTXtXML:com.adobe.xmp\x00\x00\x00\x00\x00<?xpacket begin=\"\ufeff\" id=\"W5M0MpCehiHzreSzNTczkc9d\"?> <x:xmpmeta xmlns:x=\"adobe:ns:meta/\" x:xmptk=\"Adobe XMP Core 9.1-c002 79.dba3da3b5, 2023/12/15-10:42:37        \"> <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"> <rdf:Description rdf:about=\"\" xmlns:xmp=\"http://ns.adobe.com/xap/1.0/\" xmlns:xmpMM=\"http://ns.adobe.com/xap/1.0/mm/\" xmlns:stRef=\"http://ns.adobe.com/xap/1.0/sType/ResourceRef#\" xmp:CreatorTool=\"Adobe Photoshop 25.6 (Windows)\" xmpMM:InstanceID=\"xmp.iid:1A52ABE8FDD111EEAF5BACEE46085539\" xmpMM:DocumentID=\"xmp.did:1A52ABE9FDD111EEAF5BACEE46085539\"> <xmpMM:DerivedFrom stRef:instanceID=\"xmp.iid:1A52ABE6FDD111EEAF5BACEE46085539\" stRef:documentID=\"xmp.did:1A52ABE7FDD111EEAF5BACEE46085539\"/> </rdf:Description> </rdf:RDF> </x:xmpmeta> <?xpacket end=\"r\"?>\x8f\x1b\xe2\x1a\x00\x00\x00\x06PLTE\xff\xff\xff\x00\x00\x00U\xc2\xd3~\x00\x00\x00\x01tRNS\x00@\xe6\xd8f\x00\x00\x00\x11IDATx\xdab`\x18\x05\xa3\x80\xfa\x00 \xc0\x00\x02X\x00\x01os\x85\x0f\x00\x00\x00\x00IEND\xaeB`\x82"),
+}
+var resource50pxspacerPng = &fyne.StaticResource{
+	StaticName: "50px_spacer.png",
+	StaticContent: []byte(
+		"\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00\x002\x00\x00\x002\b\x06\x00\x00\x00\x1e?\x88\xb1\x00\x00\x00\x19tEXtSoftware\x00Adobe ImageReadyq\xc9e<\x00\x00\x03&iTXtXML:com.adobe.xmp\x00\x00\x00\x00\x00<?xpacket begin=\"\ufeff\" id=\"W5M0MpCehiHzreSzNTczkc9d\"?> <x:xmpmeta xmlns:x=\"adobe:ns:meta/\" x:xmptk=\"Adobe XMP Core 9.1-c002 79.dba3da3b5, 2023/12/15-10:42:37        \"> <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"> <rdf:Description rdf:about=\"\" xmlns:xmp=\"http://ns.adobe.com/xap/1.0/\" xmlns:xmpMM=\"http://ns.adobe.com/xap/1.0/mm/\" xmlns:stRef=\"http://ns.adobe.com/xap/1.0/sType/ResourceRef#\" xmp:CreatorTool=\"Adobe Photoshop 25.6 (Windows)\" xmpMM:InstanceID=\"xmp.iid:9D7D75C1FDC411EEBABCD925DC6A7F71\" xmpMM:DocumentID=\"xmp.did:9D7D75C2FDC411EEBABCD925DC6A7F71\"> <xmpMM:DerivedFrom stRef:instanceID=\"xmp.iid:9D7D75BFFDC411EEBABCD925DC6A7F71\" stRef:documentID=\"xmp.did:9D7D75C0FDC411EEBABCD925DC6A7F71\"/> </rdf:Description> </rdf:RDF> </x:xmpmeta> <?xpacket end=\"r\"?>D@\x14\x8e\x00\x00\x00GIDATx\xda\xec\xcf1\x11\x00\x00\b\x04 \xb5\x7f緅\x83\a\r\xe8$\xf5\xc1\xd4\x13\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"7V\x80\x01\x00#\xb9\x03a\x9e\x8c@\xdc\x00\x00\x00\x00IEND\xaeB`\x82"),
+}
 var resourceMcsLogo2019Jpg = &fyne.StaticResource{
 	StaticName: "mcs-logo-2019.jpg",
 	StaticContent: []byte(
